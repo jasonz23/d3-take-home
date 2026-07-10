@@ -33,8 +33,8 @@ import type {
   Alert,
   AlertSeverity,
   AlertSortKey,
+  AlertSortTerm,
   AlertStatus,
-  SortDirection,
 } from "@/lib/types";
 import { severityOptions, statusOptions } from "@/lib/types";
 
@@ -60,12 +60,7 @@ export default function Home() {
     initialFilters.status,
   );
   const [source, setSource] = useState(initialFilters.source);
-  const [sortBy, setSortBy] = useState<AlertSortKey | "">(
-    initialFilters.sortBy,
-  );
-  const [sortDirection, setSortDirection] = useState<SortDirection>(
-    initialFilters.sortDirection,
-  );
+  const [sorts, setSorts] = useState<AlertSortTerm[]>(initialFilters.sorts);
   const [page, setPage] = useState(initialFilters.page);
   const [pageSize, setPageSize] = useState(initialFilters.pageSize);
   const [isLoading, setIsLoading] = useState(true);
@@ -105,9 +100,8 @@ export default function Home() {
       params.set("source", source);
     }
 
-    if (sortBy) {
-      params.set("sortBy", sortBy);
-      params.set("sortDirection", sortDirection);
+    if (sorts.length > 0) {
+      params.set("sort", serializeSorts(sorts));
     }
 
     params.set("page", String(page));
@@ -115,7 +109,7 @@ export default function Home() {
 
     const value = params.toString();
     return value ? `?${value}` : "";
-  }, [debouncedSearch, page, pageSize, severity, sortBy, sortDirection, source, status]);
+  }, [debouncedSearch, page, pageSize, severity, sorts, source, status]);
 
   const hasActiveFilters =
     search.trim().length > 0 ||
@@ -249,8 +243,7 @@ export default function Home() {
     setSeverity("All");
     setStatus("All");
     setSource("All");
-    setSortBy("");
-    setSortDirection("desc");
+    setSorts([]);
     setPage(DEFAULT_PAGE);
   }, []);
 
@@ -295,8 +288,7 @@ export default function Home() {
         setSeverity("All");
         setStatus("All");
         setSource("All");
-        setSortBy("");
-        setSortDirection("desc");
+        setSorts([]);
         setPage(DEFAULT_PAGE);
         setSelectedAlertId(null);
         setDetailAlert(null);
@@ -315,19 +307,26 @@ export default function Home() {
 
   const handleSort = useCallback(
     (key: AlertSortKey) => {
-      if (sortBy === key) {
-        setSortDirection((current) => (current === "asc" ? "desc" : "asc"));
-        setPage(DEFAULT_PAGE);
-        return;
-      }
+      setSorts((current) => {
+        const existingIndex = current.findIndex((sort) => sort.key === key);
+        const existingSort =
+          existingIndex >= 0 ? current[existingIndex] : null;
 
-      setSortBy(key);
-      setSortDirection(
-        key === "createdAt" || key === "updatedAt" ? "desc" : "asc",
-      );
+        if (!existingSort) {
+          return [...current, { key, direction: "asc" }];
+        }
+
+        if (existingSort.direction === "asc") {
+          return current.map((sort, index) =>
+            index === existingIndex ? { ...sort, direction: "desc" } : sort,
+          );
+        }
+
+        return current.filter((sort) => sort.key !== key);
+      });
       setPage(DEFAULT_PAGE);
     },
-    [sortBy],
+    [],
   );
 
   const handleStatusChange = useCallback(
@@ -751,8 +750,7 @@ export default function Home() {
             <AlertTable
               alerts={alerts}
               selectedAlertId={selectedAlertId}
-              sortBy={sortBy}
-              sortDirection={sortDirection}
+              sorts={sorts}
               onSort={handleSort}
               onSelect={selectAlert}
             />
@@ -837,8 +835,7 @@ type InitialFilters = {
   severity: AlertSeverity | "All";
   status: AlertStatus | "All";
   source: string;
-  sortBy: AlertSortKey | "";
-  sortDirection: SortDirection;
+  sorts: AlertSortTerm[];
   page: number;
   pageSize: number;
 };
@@ -848,8 +845,7 @@ const defaultFilters: InitialFilters = {
   severity: "All",
   status: "All",
   source: "All",
-  sortBy: "",
-  sortDirection: "desc",
+  sorts: [],
   page: DEFAULT_PAGE,
   pageSize: DEFAULT_PAGE_SIZE,
 };
@@ -873,8 +869,6 @@ function readInitialFilters(): InitialFilters {
   const params = new URLSearchParams(window.location.search);
   const severity = params.get("severity");
   const status = params.get("status");
-  const sortBy = params.get("sortBy");
-  const sortDirection = params.get("sortDirection");
   const page = parsePositiveInt(params.get("page"));
   const pageSize = parsePositiveInt(params.get("pageSize"));
   const normalizedPageSize =
@@ -892,16 +886,61 @@ function readInitialFilters(): InitialFilters {
       ? (status as AlertStatus)
       : defaultFilters.status,
     source: params.get("source") || defaultFilters.source,
-    sortBy: sortKeys.includes(sortBy as AlertSortKey)
-      ? (sortBy as AlertSortKey)
-      : defaultFilters.sortBy,
-    sortDirection:
-      sortDirection === "asc" || sortDirection === "desc"
-        ? sortDirection
-        : defaultFilters.sortDirection,
+    sorts: parseInitialSorts(params),
     page: page ?? defaultFilters.page,
     pageSize: normalizedPageSize,
   };
+}
+
+function parseInitialSorts(params: URLSearchParams): AlertSortTerm[] {
+  const sort = params.get("sort");
+
+  if (sort) {
+    return parseSortParam(sort);
+  }
+
+  const legacySortBy = params.get("sortBy");
+  const legacySortDirection = params.get("sortDirection");
+
+  if (!sortKeys.includes(legacySortBy as AlertSortKey)) {
+    return defaultFilters.sorts;
+  }
+
+  return [
+    {
+      key: legacySortBy as AlertSortKey,
+      direction:
+        legacySortDirection === "asc" || legacySortDirection === "desc"
+          ? legacySortDirection
+          : "asc",
+    },
+  ];
+}
+
+function parseSortParam(value: string): AlertSortTerm[] {
+  const seen = new Set<AlertSortKey>();
+  const parsed: AlertSortTerm[] = [];
+
+  for (const item of value.split(",")) {
+    const [key, direction] = item.split(":");
+
+    if (
+      !sortKeys.includes(key as AlertSortKey) ||
+      (direction !== "asc" && direction !== "desc") ||
+      seen.has(key as AlertSortKey)
+    ) {
+      return defaultFilters.sorts;
+    }
+
+    seen.add(key as AlertSortKey);
+    parsed.push({ key: key as AlertSortKey, direction });
+  }
+
+  return parsed;
+}
+
+function serializeSorts(sorts: AlertSortTerm[]) {
+  return sorts.map((sort) => `${sort.key}:${sort.direction}`).join(",");
 }
 
 function parsePositiveInt(value: string | null) {

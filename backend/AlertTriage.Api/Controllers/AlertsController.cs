@@ -41,6 +41,7 @@ public sealed class AlertsController : ControllerBase
         [FromQuery] string? severity,
         [FromQuery] string? status,
         [FromQuery] string? source,
+        [FromQuery] string? sort,
         [FromQuery] string? sortBy,
         [FromQuery] string? sortDirection,
         [FromQuery] int? page,
@@ -58,6 +59,13 @@ public sealed class AlertsController : ControllerBase
         if (requestedPageSize < 1 || requestedPageSize > MaxPageSize)
         {
             return BadRequest(Error("INVALID_PAGE_SIZE", $"The page size must be between 1 and {MaxPageSize}."));
+        }
+
+        var sortError = TryParseSortTerms(sort, sortBy, sortDirection, out var sortTerms);
+
+        if (sortError is not null)
+        {
+            return BadRequest(sortError);
         }
 
         var total = await _db.Alerts.CountAsync(cancellationToken);
@@ -103,7 +111,7 @@ public sealed class AlertsController : ControllerBase
         }
 
         var filtered = await query.CountAsync(cancellationToken);
-        query = ApplyOrdering(query, sortBy, sortDirection);
+        query = ApplyOrdering(query, sortTerms);
 
         var totalPages = filtered == 0
             ? 0
@@ -412,30 +420,172 @@ public sealed class AlertsController : ControllerBase
 
     private static IQueryable<Alert> ApplyOrdering(
         IQueryable<Alert> query,
-        string? sortBy,
-        string? sortDirection)
+        IReadOnlyList<AlertSortTerm> sortTerms)
     {
-        var descending = string.Equals(sortDirection, "desc", StringComparison.OrdinalIgnoreCase);
-
-        return (sortBy ?? string.Empty).Trim().ToLowerInvariant() switch
+        if (sortTerms.Count == 0)
         {
-            "id" => descending ? query.OrderByDescending(x => x.Id) : query.OrderBy(x => x.Id),
-            "title" => descending ? query.OrderByDescending(x => x.Title) : query.OrderBy(x => x.Title),
-            "severity" => descending
-                ? query.OrderByDescending(SeverityRankExpression).ThenByDescending(x => x.CreatedAt)
-                : query.OrderBy(SeverityRankExpression).ThenByDescending(x => x.CreatedAt),
-            "status" => descending
-                ? query.OrderByDescending(StatusRankExpression).ThenByDescending(x => x.CreatedAt)
-                : query.OrderBy(StatusRankExpression).ThenByDescending(x => x.CreatedAt),
-            "source" => descending ? query.OrderByDescending(x => x.Source) : query.OrderBy(x => x.Source),
-            "assignee" => descending ? query.OrderByDescending(x => x.Assignee) : query.OrderBy(x => x.Assignee),
-            "updatedat" => descending ? query.OrderByDescending(x => x.UpdatedAt) : query.OrderBy(x => x.UpdatedAt),
-            "createdat" => descending ? query.OrderByDescending(x => x.CreatedAt) : query.OrderBy(x => x.CreatedAt),
-            _ => query
+            return query
                 .OrderBy(x => x.Status == AlertStatus.Resolved || x.Status == AlertStatus.FalsePositive ? 1 : 0)
                 .ThenBy(SeverityRankExpression)
                 .ThenByDescending(x => x.CreatedAt)
+                .ThenBy(x => x.Id);
+        }
+
+        IOrderedQueryable<Alert>? orderedQuery = null;
+
+        foreach (var sortTerm in sortTerms)
+        {
+            orderedQuery = ApplySortTerm(query, orderedQuery, sortTerm);
+        }
+
+        if (!sortTerms.Any(x => x.Key == "id"))
+        {
+            orderedQuery = orderedQuery!.ThenBy(x => x.Id);
+        }
+
+        return orderedQuery!;
+    }
+
+    private static IOrderedQueryable<Alert> ApplySortTerm(
+        IQueryable<Alert> query,
+        IOrderedQueryable<Alert>? orderedQuery,
+        AlertSortTerm sortTerm) =>
+        sortTerm.Key switch
+        {
+            "id" => ApplySort(query, orderedQuery, x => x.Id, sortTerm.Descending),
+            "title" => ApplySort(query, orderedQuery, x => x.Title, sortTerm.Descending),
+            "severity" => ApplySort(query, orderedQuery, SeverityRankExpression, sortTerm.Descending),
+            "status" => ApplySort(query, orderedQuery, StatusRankExpression, sortTerm.Descending),
+            "source" => ApplySort(query, orderedQuery, x => x.Source, sortTerm.Descending),
+            "assignee" => ApplySort(query, orderedQuery, x => x.Assignee, sortTerm.Descending),
+            "updatedat" => ApplySort(query, orderedQuery, x => x.UpdatedAt, sortTerm.Descending),
+            "createdat" => ApplySort(query, orderedQuery, x => x.CreatedAt, sortTerm.Descending),
+            _ => throw new InvalidOperationException($"Unsupported sort key '{sortTerm.Key}'.")
         };
+
+    private static IOrderedQueryable<Alert> ApplySort<TKey>(
+        IQueryable<Alert> query,
+        IOrderedQueryable<Alert>? orderedQuery,
+        Expression<Func<Alert, TKey>> keySelector,
+        bool descending)
+    {
+        if (orderedQuery is null)
+        {
+            return descending
+                ? query.OrderByDescending(keySelector)
+                : query.OrderBy(keySelector);
+        }
+
+        return descending
+            ? orderedQuery.ThenByDescending(keySelector)
+            : orderedQuery.ThenBy(keySelector);
+    }
+
+    private static object? TryParseSortTerms(
+        string? sort,
+        string? sortBy,
+        string? sortDirection,
+        out IReadOnlyList<AlertSortTerm> sortTerms)
+    {
+        var parsed = new List<AlertSortTerm>();
+        var seenKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        if (!string.IsNullOrWhiteSpace(sort))
+        {
+            var parts = sort
+                .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
+            foreach (var part in parts)
+            {
+                var pieces = part.Split(':', StringSplitOptions.TrimEntries);
+
+                if (pieces.Length != 2 ||
+                    string.IsNullOrWhiteSpace(pieces[0]) ||
+                    string.IsNullOrWhiteSpace(pieces[1]))
+                {
+                    sortTerms = [];
+                    return Error("INVALID_SORT", "Sort values must use the format field:asc or field:desc.");
+                }
+
+                var key = NormalizeSortKey(pieces[0]);
+
+                if (key is null)
+                {
+                    sortTerms = [];
+                    return Error("INVALID_SORT_FIELD", $"Unsupported sort field '{pieces[0]}'.");
+                }
+
+                if (!TryParseSortDirection(pieces[1], out var descending))
+                {
+                    sortTerms = [];
+                    return Error("INVALID_SORT_DIRECTION", "Sort direction must be asc or desc.");
+                }
+
+                if (!seenKeys.Add(key))
+                {
+                    sortTerms = [];
+                    return Error("DUPLICATE_SORT_FIELD", $"Sort field '{pieces[0]}' was provided more than once.");
+                }
+
+                parsed.Add(new AlertSortTerm(key, descending));
+            }
+        }
+        else if (!string.IsNullOrWhiteSpace(sortBy))
+        {
+            var key = NormalizeSortKey(sortBy);
+
+            if (key is null)
+            {
+                sortTerms = [];
+                return Error("INVALID_SORT_FIELD", $"Unsupported sort field '{sortBy}'.");
+            }
+
+            if (!string.IsNullOrWhiteSpace(sortDirection) &&
+                !TryParseSortDirection(sortDirection, out _))
+            {
+                sortTerms = [];
+                return Error("INVALID_SORT_DIRECTION", "Sort direction must be asc or desc.");
+            }
+
+            parsed.Add(new AlertSortTerm(
+                key,
+                string.Equals(sortDirection, "desc", StringComparison.OrdinalIgnoreCase)));
+        }
+
+        sortTerms = parsed;
+        return null;
+    }
+
+    private static string? NormalizeSortKey(string key) =>
+        key.Trim().ToLowerInvariant() switch
+        {
+            "id" => "id",
+            "title" => "title",
+            "severity" => "severity",
+            "status" => "status",
+            "source" => "source",
+            "assignee" => "assignee",
+            "updatedat" => "updatedat",
+            "createdat" => "createdat",
+            _ => null
+        };
+
+    private static bool TryParseSortDirection(string direction, out bool descending)
+    {
+        if (string.Equals(direction, "asc", StringComparison.OrdinalIgnoreCase))
+        {
+            descending = false;
+            return true;
+        }
+
+        if (string.Equals(direction, "desc", StringComparison.OrdinalIgnoreCase))
+        {
+            descending = true;
+            return true;
+        }
+
+        descending = false;
+        return false;
     }
 
     private static IQueryable<Alert> ApplySearch(
@@ -679,4 +829,6 @@ public sealed class AlertsController : ControllerBase
         string Source,
         DateTimeOffset CreatedAt,
         string? Assignee);
+
+    private sealed record AlertSortTerm(string Key, bool Descending);
 }

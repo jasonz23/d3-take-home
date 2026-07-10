@@ -111,6 +111,10 @@ export type AlertSortKey =
   | "createdAt"
   | "assignee"
   | "updatedAt";
+export type AlertSortTerm = {
+  key: AlertSortKey;
+  direction: SortDirection;
+};
 
 export const severityOptions = alertSeveritySchema.options;
 export const statusOptions = alertStatusSchema.options;

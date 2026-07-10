@@ -32,6 +32,7 @@ public sealed class AlertsControllerTests
             severity: null,
             status: null,
             source: null,
+            sort: null,
             sortBy: "id",
             sortDirection: "asc",
             page: 2,
@@ -67,6 +68,7 @@ public sealed class AlertsControllerTests
             severity: null,
             status: null,
             source: null,
+            sort: null,
             sortBy: null,
             sortDirection: null,
             page: 1,
@@ -92,6 +94,7 @@ public sealed class AlertsControllerTests
             severity: null,
             status: null,
             source: null,
+            sort: null,
             sortBy: null,
             sortDirection: null,
             page: 0,
@@ -117,6 +120,7 @@ public sealed class AlertsControllerTests
             severity: "Severe",
             status: null,
             source: null,
+            sort: null,
             sortBy: null,
             sortDirection: null,
             page: 1,
@@ -142,6 +146,7 @@ public sealed class AlertsControllerTests
             severity: null,
             status: "Ignored",
             source: null,
+            sort: null,
             sortBy: null,
             sortDirection: null,
             page: 1,
@@ -191,6 +196,7 @@ public sealed class AlertsControllerTests
             severity: "Critical",
             status: "New",
             source: "CrowdStrike",
+            sort: null,
             sortBy: "id",
             sortDirection: "desc",
             page: 1,
@@ -204,6 +210,83 @@ public sealed class AlertsControllerTests
         Assert.Equal(4, response.Meta.Total);
         Assert.Equal(2, response.Meta.Filtered);
         Assert.Equal(new[] { "CrowdStrike", "Okta" }, response.Meta.Sources);
+    }
+
+    [Fact]
+    public async Task GetAlerts_WhenMultiSortProvided_AppliesSortsInOrder()
+    {
+        await using var connection = new SqliteConnection("Data Source=:memory:");
+        await connection.OpenAsync();
+        await using var db = CreateDbContext(connection);
+        db.Alerts.AddRange(
+            CreateAlert(
+                id: "alert-001",
+                severity: AlertSeverity.Critical,
+                status: AlertStatus.New),
+            CreateAlert(
+                id: "alert-002",
+                severity: AlertSeverity.Critical,
+                status: AlertStatus.Resolved),
+            CreateAlert(
+                id: "alert-003",
+                severity: AlertSeverity.Critical,
+                status: AlertStatus.Escalated),
+            CreateAlert(
+                id: "alert-004",
+                severity: AlertSeverity.High,
+                status: AlertStatus.FalsePositive));
+        await db.SaveChangesAsync();
+
+        var controller = new AlertsController(db);
+
+        var result = await controller.GetAlerts(
+            search: null,
+            severity: null,
+            status: null,
+            source: null,
+            sort: "severity:asc,status:desc,id:asc",
+            sortBy: null,
+            sortDirection: null,
+            page: 1,
+            pageSize: 25,
+            cancellationToken: CancellationToken.None);
+
+        var ok = Assert.IsType<OkObjectResult>(result);
+        var response = Assert.IsType<AlertListResponse>(ok.Value);
+
+        Assert.Equal(
+            new[] { "alert-002", "alert-003", "alert-001", "alert-004" },
+            response.Data.Select(x => x.Id).ToArray());
+    }
+
+    [Theory]
+    [InlineData("severity:up")]
+    [InlineData("severity:asc,status")]
+    [InlineData("severity:asc,severity:desc")]
+    [InlineData("owner:asc")]
+    public async Task GetAlerts_WhenMultiSortIsInvalid_ReturnsBadRequest(string sort)
+    {
+        await using var connection = new SqliteConnection("Data Source=:memory:");
+        await connection.OpenAsync();
+        await using var db = CreateDbContext(connection);
+        db.Alerts.Add(CreateAlert());
+        await db.SaveChangesAsync();
+
+        var controller = new AlertsController(db);
+
+        var result = await controller.GetAlerts(
+            search: null,
+            severity: null,
+            status: null,
+            source: null,
+            sort: sort,
+            sortBy: null,
+            sortDirection: null,
+            page: 1,
+            pageSize: 25,
+            cancellationToken: CancellationToken.None);
+
+        Assert.IsType<BadRequestObjectResult>(result);
     }
 
     [Theory]
@@ -243,6 +326,7 @@ public sealed class AlertsControllerTests
             severity: null,
             status: null,
             source: null,
+            sort: null,
             sortBy: "id",
             sortDirection: "asc",
             page: 1,

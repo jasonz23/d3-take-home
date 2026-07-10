@@ -52,16 +52,25 @@ search
 severity
 status
 source
+sort
 sortBy
 sortDirection
 page
 pageSize
 ```
 
+Use `sort` for multi-column ordering:
+
+```text
+sort=severity:asc,status:desc,createdAt:desc
+```
+
+`sortBy` and `sortDirection` are still accepted for single-column legacy requests.
+
 Example:
 
 ```text
-http://localhost:8182/api/alerts?severity=Critical&status=New&sortBy=createdAt&sortDirection=desc&page=2&pageSize=25
+http://localhost:8182/api/alerts?severity=Critical&status=New&sort=severity:asc,status:desc,createdAt:desc&page=2&pageSize=25
 ```
 
 Analytics summary:

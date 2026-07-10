@@ -7,15 +7,14 @@ import {
   formatExactDateTime,
   formatRelativeDateTime,
 } from "@/lib/alert-utils";
-import type { Alert, AlertSortKey, SortDirection } from "@/lib/types";
+import type { Alert, AlertSortKey, AlertSortTerm } from "@/lib/types";
 import { SeverityBadge } from "@/components/SeverityBadge";
 import { StatusBadge } from "@/components/StatusBadge";
 
 type AlertTableProps = {
   alerts: Alert[];
   selectedAlertId: string | null;
-  sortBy: AlertSortKey | "";
-  sortDirection: SortDirection;
+  sorts: AlertSortTerm[];
   onSort: (sortBy: AlertSortKey) => void;
   onSelect: (id: string, openDrawer?: boolean) => void;
 };
@@ -33,8 +32,7 @@ const columns: Array<{ key: AlertSortKey; label: string; className?: string }> =
 export function AlertTable({
   alerts,
   selectedAlertId,
-  sortBy,
-  sortDirection,
+  sorts,
   onSort,
   onSelect,
 }: AlertTableProps) {
@@ -56,26 +54,50 @@ export function AlertTable({
       >
         <thead className="sticky top-0 z-10 bg-[#0b0611] text-xs uppercase text-[#8f7aa8] shadow-[inset_0_-1px_0_#2d1647]">
           <tr>
-            {columns.map((column) => (
-              <th key={column.key} className={cx("px-4 py-3", column.className)}>
-                <button
-                  type="button"
-                  onClick={() => onSort(column.key)}
-                  className="inline-flex items-center gap-1.5 rounded-sm font-semibold tracking-normal text-[#a89ab9] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a855f7]"
+            {columns.map((column) => {
+              const sortIndex = sorts.findIndex(
+                (sort) => sort.key === column.key,
+              );
+              const sort = sortIndex >= 0 ? sorts[sortIndex] : null;
+              const priority = sortIndex + 1;
+
+              return (
+                <th
+                  key={column.key}
+                  className={cx("px-4 py-3", column.className)}
                 >
-                  {column.label}
-                  {sortBy === column.key ? (
-                    sortDirection === "asc" ? (
-                      <ArrowUp className="size-3.5" />
+                  <button
+                    type="button"
+                    onClick={() => onSort(column.key)}
+                    className="inline-flex items-center gap-1.5 rounded-sm font-semibold tracking-normal text-[#a89ab9] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a855f7]"
+                    aria-label={buildSortLabel(column.label, sort, priority)}
+                    title="Click to cycle ascending, descending, and unsorted. Additional columns keep multi-sort order."
+                  >
+                    {column.label}
+                    {sort ? (
+                      <>
+                        {sort.direction === "asc" ? (
+                          <ArrowUp className="size-3.5" aria-hidden="true" />
+                        ) : (
+                          <ArrowDown className="size-3.5" aria-hidden="true" />
+                        )}
+                        <span
+                          className="inline-flex min-w-6 items-center justify-center rounded-sm border border-[#5f11ff]/70 bg-[#160b22] px-1 text-[10px] normal-case leading-4 text-white"
+                          aria-label={`Sort priority ${priority}`}
+                        >
+                          {formatSortPriority(priority)}
+                        </span>
+                      </>
                     ) : (
-                      <ArrowDown className="size-3.5" />
-                    )
-                  ) : (
-                    <ArrowUpDown className="size-3.5 text-[#6f5b84]" />
-                  )}
-                </button>
-              </th>
-            ))}
+                      <ArrowUpDown
+                        className="size-3.5 text-[#6f5b84]"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </button>
+                </th>
+              );
+            })}
             <th className="w-12 px-4 py-3">
               <span className="sr-only">Open alert</span>
             </th>
@@ -175,4 +197,39 @@ export function AlertTable({
       </table>
     </div>
   );
+}
+
+function buildSortLabel(
+  label: string,
+  sort: AlertSortTerm | null,
+  priority: number,
+) {
+  if (!sort) {
+    return `Sort by ${label} ascending`;
+  }
+
+  const direction = sort.direction === "asc" ? "ascending" : "descending";
+  const nextAction =
+    sort.direction === "asc" ? "sort descending" : "remove sort";
+
+  return `${label} sorted ${direction}, ${formatSortPriority(
+    priority,
+  )} priority. Click to ${nextAction}.`;
+}
+
+function formatSortPriority(priority: number) {
+  if (priority % 100 >= 11 && priority % 100 <= 13) {
+    return `${priority}th`;
+  }
+
+  switch (priority % 10) {
+    case 1:
+      return `${priority}st`;
+    case 2:
+      return `${priority}nd`;
+    case 3:
+      return `${priority}rd`;
+    default:
+      return `${priority}th`;
+  }
 }

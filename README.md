@@ -43,7 +43,7 @@ API/Swagger: `http://localhost:8182/swagger`
 ## Key Decisions And Trade-Offs
 
 - Kept ASP.NET as the system of record. This is more setup than a frontend-only demo, but it matches the requested production boundary and keeps DB credentials out of the browser.
-- Made filtering, sorting, pagination, search, import validation, status updates, assignee updates, and analytics API-owned. The UI stays thin and refresh/share works because filters and page state are mirrored into the URL.
+- Made filtering, multi-sort, pagination, search, import validation, status updates, assignee updates, and analytics API-owned. The UI stays thin and refresh/share works because queue state is mirrored into the URL.
 - Used EF Core with PostgreSQL and checked-in migrations. The reset/setup flow does not auto-seed; mock alerts are imported explicitly through the API so local state is predictable.
 - Added optimistic updates with `version` conflict checks for status and assignee changes. This is simple and visible for a take-home; production should use a stronger row-version strategy.
 - Added `AlertStatusEvent` audit rows and an Investigation Timeline in the drawer. This makes the stored audit trail visible instead of only persisting it.
@@ -57,7 +57,7 @@ API/Swagger: `http://localhost:8182/swagger`
 - **Assignee editing:** Updating ownership directly in the drawer keeps triage flow fast without leaving the selected alert.
 - **Investigation timeline:** Status history in the side drawer turns audit events into a readable investigation narrative.
 - **Analytics charts page:** Chart.js summaries expose severity, status, source, assignee workload, and created-over-time trends without exporting data.
-- **Pagination with URL state:** Page, page size, filters, search, and sort persist in the URL so analysts can refresh or share the same queue view.
+- **Pagination and multi-sort with URL state:** Page, page size, filters, search, and ordered sort keys persist in the URL so analysts can refresh or share the same queue view.
 
 ## AI Coding Agent Usage
 

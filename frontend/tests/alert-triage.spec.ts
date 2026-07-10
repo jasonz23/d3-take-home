@@ -306,6 +306,22 @@ test("keeps pagination and filters in the URL and API query", async ({ page }) =
   await page.getByRole("button", { name: "Next page" }).click();
   await expect(page).toHaveURL(/page=3/);
 
+  await page.getByRole("button", { name: /Sort by Severity ascending/ }).click();
+  const severityAscending = page.getByRole("button", {
+    name: /Severity sorted ascending, 1st priority/,
+  });
+  await expect(severityAscending).toContainText("1st");
+
+  await page.getByRole("button", { name: /Sort by Status ascending/ }).click();
+  const statusAscending = page.getByRole("button", {
+    name: /Status sorted ascending, 2nd priority/,
+  });
+  await expect(statusAscending).toContainText("2nd");
+
+  await expect.poll(() => new URL(page.url()).searchParams.get("sort")).toBe(
+    "severity:asc,status:asc",
+  );
+
   expect(
     requestedSearches.some((search) => {
       const params = new URLSearchParams(search);
@@ -316,6 +332,36 @@ test("keeps pagination and filters in the URL and API query", async ({ page }) =
       );
     }),
   ).toBe(true);
+
+  await expect.poll(() =>
+    requestedSearches.some((search) => {
+      const params = new URLSearchParams(search);
+      return (
+        params.get("sort") === "severity:asc,status:asc" &&
+        params.get("page") === "1" &&
+        params.get("pageSize") === "10"
+      );
+    }),
+  ).toBe(true);
+
+  await severityAscending.click();
+  const severityDescending = page.getByRole("button", {
+    name: /Severity sorted descending, 1st priority/,
+  });
+  await expect(severityDescending).toContainText("1st");
+  await expect.poll(() => new URL(page.url()).searchParams.get("sort")).toBe(
+    "severity:desc,status:asc",
+  );
+
+  await severityDescending.click();
+  await expect
+    .poll(() => new URL(page.url()).searchParams.get("sort"))
+    .toBe("status:asc");
+  await expect(
+    page.getByRole("button", {
+      name: /Status sorted ascending, 1st priority/,
+    }),
+  ).toContainText("1st");
 });
 
 test("uploads an alerts JSON file through the API and refreshes the table", async ({
