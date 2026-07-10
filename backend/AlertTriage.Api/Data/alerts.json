@@ -1,0 +1,1802 @@
+[
+  {
+    "id": "alert-001",
+    "title": "Suspicious PowerShell execution",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T18:00:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-002",
+    "title": "Impossible travel sign-in detected - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T17:53:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-003",
+    "title": "Endpoint malware quarantine event - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T17:46:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-004",
+    "title": "Privileged role assignment anomaly - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T17:39:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-005",
+    "title": "Multiple failed VPN login attempts - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T17:32:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-006",
+    "title": "Outbound connection to known C2 host - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T17:25:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-007",
+    "title": "Sensitive file copied to removable media - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T17:18:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-008",
+    "title": "New inbox forwarding rule created - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "InProgress",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T17:11:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-009",
+    "title": "Unusual AWS access key usage - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T17:04:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-010",
+    "title": "Windows Defender disabled unexpectedly - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T16:57:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-011",
+    "title": "High-risk OAuth application consent - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T16:50:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-012",
+    "title": "Lateral movement pattern detected - AWS GuardDuty",
+    "severity": "Low",
+    "status": "Resolved",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T16:43:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-013",
+    "title": "DNS tunneling behavior observed - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T16:36:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-014",
+    "title": "Database export volume spike - Defender for Endpoint",
+    "severity": "High",
+    "status": "Escalated",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T16:29:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-015",
+    "title": "Suspicious scheduled task created - Cloudflare",
+    "severity": "Medium",
+    "status": "InProgress",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T16:22:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-016",
+    "title": "Unusual service account authentication - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T16:15:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-017",
+    "title": "Container image vulnerability alert - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T16:08:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-018",
+    "title": "Unexpected admin console login - Okta",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T16:01:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-019",
+    "title": "Phishing email reported by user - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T15:54:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-020",
+    "title": "EDR tamper protection alert - AWS GuardDuty",
+    "severity": "Low",
+    "status": "FalsePositive",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T15:47:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-021",
+    "title": "Suspicious PowerShell execution - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T15:40:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-022",
+    "title": "Impossible travel sign-in detected - Defender for Endpoint",
+    "severity": "High",
+    "status": "InProgress",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T15:33:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-023",
+    "title": "Endpoint malware quarantine event - Cloudflare",
+    "severity": "Medium",
+    "status": "Resolved",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T15:26:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-024",
+    "title": "Privileged role assignment anomaly - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T15:19:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-025",
+    "title": "Multiple failed VPN login attempts - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T15:12:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-026",
+    "title": "Outbound connection to known C2 host - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T15:05:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-027",
+    "title": "Sensitive file copied to removable media - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "Escalated",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T14:58:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-028",
+    "title": "New inbox forwarding rule created - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T14:51:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-029",
+    "title": "Unusual AWS access key usage - Splunk",
+    "severity": "Critical",
+    "status": "InProgress",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T14:44:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-030",
+    "title": "Windows Defender disabled unexpectedly - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T14:37:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-031",
+    "title": "High-risk OAuth application consent - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T14:30:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-032",
+    "title": "Lateral movement pattern detected - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T14:23:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-033",
+    "title": "DNS tunneling behavior observed - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T14:16:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-034",
+    "title": "Database export volume spike - Okta",
+    "severity": "High",
+    "status": "Resolved",
+    "source": "Okta",
+    "createdAt": "2026-07-09T14:09:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-035",
+    "title": "Suspicious scheduled task created - Microsoft Sentinel",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T14:02:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-036",
+    "title": "Unusual service account authentication - AWS GuardDuty",
+    "severity": "Low",
+    "status": "InProgress",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T13:55:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-037",
+    "title": "Container image vulnerability alert - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T13:48:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-038",
+    "title": "Unexpected admin console login - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T13:41:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-039",
+    "title": "Phishing email reported by user - Cloudflare",
+    "severity": "Medium",
+    "status": "FalsePositive",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T13:34:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-040",
+    "title": "EDR tamper protection alert - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "Escalated",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T13:27:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-041",
+    "title": "Suspicious PowerShell execution - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T13:20:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-042",
+    "title": "Impossible travel sign-in detected - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T13:13:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-043",
+    "title": "Endpoint malware quarantine event - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "InProgress",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T13:06:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-044",
+    "title": "Privileged role assignment anomaly - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T12:59:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-045",
+    "title": "Multiple failed VPN login attempts - Splunk",
+    "severity": "Critical",
+    "status": "Resolved",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T12:52:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-046",
+    "title": "Outbound connection to known C2 host - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T12:45:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-047",
+    "title": "Sensitive file copied to removable media - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T12:38:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-048",
+    "title": "New inbox forwarding rule created - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T12:31:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-049",
+    "title": "Unusual AWS access key usage - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T12:24:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-050",
+    "title": "Windows Defender disabled unexpectedly - Okta",
+    "severity": "High",
+    "status": "InProgress",
+    "source": "Okta",
+    "createdAt": "2026-07-09T12:17:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-051",
+    "title": "High-risk OAuth application consent - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T12:10:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-052",
+    "title": "Lateral movement pattern detected - AWS GuardDuty",
+    "severity": "Critical",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T12:03:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-053",
+    "title": "DNS tunneling behavior observed - Splunk",
+    "severity": "Critical",
+    "status": "Escalated",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T11:56:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-054",
+    "title": "Database export volume spike - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T11:49:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-055",
+    "title": "Suspicious scheduled task created - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T11:42:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-056",
+    "title": "Unusual service account authentication - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "Resolved",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T11:35:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-057",
+    "title": "Container image vulnerability alert - CrowdStrike",
+    "severity": "Critical",
+    "status": "InProgress",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T11:28:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-058",
+    "title": "Unexpected admin console login - Okta",
+    "severity": "High",
+    "status": "FalsePositive",
+    "source": "Okta",
+    "createdAt": "2026-07-09T11:21:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-059",
+    "title": "Phishing email reported by user - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T11:14:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-060",
+    "title": "EDR tamper protection alert - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T11:07:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-061",
+    "title": "Suspicious PowerShell execution - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T11:00:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-062",
+    "title": "Impossible travel sign-in detected - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T10:53:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-063",
+    "title": "Endpoint malware quarantine event - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T10:46:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-064",
+    "title": "Privileged role assignment anomaly - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "InProgress",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T10:39:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-065",
+    "title": "Multiple failed VPN login attempts - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T10:32:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-066",
+    "title": "Outbound connection to known C2 host - Okta",
+    "severity": "High",
+    "status": "Escalated",
+    "source": "Okta",
+    "createdAt": "2026-07-09T10:25:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-067",
+    "title": "Sensitive file copied to removable media - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "Resolved",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T10:18:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-068",
+    "title": "New inbox forwarding rule created - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T10:11:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-069",
+    "title": "Unusual AWS access key usage - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T10:04:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-070",
+    "title": "Windows Defender disabled unexpectedly - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T09:57:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-071",
+    "title": "High-risk OAuth application consent - Cloudflare",
+    "severity": "Medium",
+    "status": "InProgress",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T09:50:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-072",
+    "title": "Lateral movement pattern detected - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T09:43:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-073",
+    "title": "DNS tunneling behavior observed - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T09:36:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-074",
+    "title": "Database export volume spike - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T09:29:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-075",
+    "title": "Suspicious scheduled task created - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T09:22:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-076",
+    "title": "Unusual service account authentication - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T09:15:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-077",
+    "title": "Container image vulnerability alert - Splunk",
+    "severity": "Critical",
+    "status": "FalsePositive",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T09:08:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-078",
+    "title": "Unexpected admin console login - Defender for Endpoint",
+    "severity": "High",
+    "status": "Resolved",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T09:01:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-079",
+    "title": "Phishing email reported by user - Cloudflare",
+    "severity": "Medium",
+    "status": "Escalated",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T08:54:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-080",
+    "title": "EDR tamper protection alert - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T08:47:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-081",
+    "title": "Suspicious PowerShell execution - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T08:40:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-082",
+    "title": "Impossible travel sign-in detected - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T08:33:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-083",
+    "title": "Endpoint malware quarantine event - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T08:26:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-084",
+    "title": "Privileged role assignment anomaly - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T08:19:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-085",
+    "title": "Multiple failed VPN login attempts - Splunk",
+    "severity": "Critical",
+    "status": "InProgress",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T08:12:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-086",
+    "title": "Outbound connection to known C2 host - Defender for Endpoint",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T08:05:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-087",
+    "title": "Sensitive file copied to removable media - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T07:58:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-088",
+    "title": "New inbox forwarding rule created - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T07:51:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-089",
+    "title": "Unusual AWS access key usage - CrowdStrike",
+    "severity": "Critical",
+    "status": "Resolved",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T07:44:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-090",
+    "title": "Windows Defender disabled unexpectedly - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T07:37:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-091",
+    "title": "High-risk OAuth application consent - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T07:30:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-092",
+    "title": "Lateral movement pattern detected - AWS GuardDuty",
+    "severity": "Low",
+    "status": "Escalated",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T07:23:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-093",
+    "title": "DNS tunneling behavior observed - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T07:16:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-094",
+    "title": "Database export volume spike - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T07:09:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-095",
+    "title": "Suspicious scheduled task created - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T07:02:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-096",
+    "title": "Unusual service account authentication - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "FalsePositive",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T06:55:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-097",
+    "title": "Container image vulnerability alert - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T06:48:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-098",
+    "title": "Unexpected admin console login - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T06:41:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-099",
+    "title": "Phishing email reported by user - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "InProgress",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T06:34:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-100",
+    "title": "EDR tamper protection alert - AWS GuardDuty",
+    "severity": "Low",
+    "status": "Resolved",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T06:27:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-101",
+    "title": "Suspicious PowerShell execution - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T06:20:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-102",
+    "title": "Impossible travel sign-in detected - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T06:13:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-103",
+    "title": "Endpoint malware quarantine event - Cloudflare",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T06:06:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-104",
+    "title": "Privileged role assignment anomaly - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T05:59:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-105",
+    "title": "Multiple failed VPN login attempts - CrowdStrike",
+    "severity": "Critical",
+    "status": "Escalated",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T05:52:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-106",
+    "title": "Outbound connection to known C2 host - Okta",
+    "severity": "High",
+    "status": "InProgress",
+    "source": "Okta",
+    "createdAt": "2026-07-09T05:45:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-107",
+    "title": "Sensitive file copied to removable media - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T05:38:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-108",
+    "title": "New inbox forwarding rule created - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T05:31:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-109",
+    "title": "Unusual AWS access key usage - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T05:24:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-110",
+    "title": "Windows Defender disabled unexpectedly - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T05:17:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-111",
+    "title": "High-risk OAuth application consent - Cloudflare",
+    "severity": "Medium",
+    "status": "Resolved",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T05:10:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-112",
+    "title": "Lateral movement pattern detected - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T05:03:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-113",
+    "title": "DNS tunneling behavior observed - CrowdStrike",
+    "severity": "Critical",
+    "status": "InProgress",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T04:56:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-114",
+    "title": "Database export volume spike - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T04:49:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-115",
+    "title": "Suspicious scheduled task created - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "FalsePositive",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T04:42:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-116",
+    "title": "Unusual service account authentication - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T04:35:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-117",
+    "title": "Container image vulnerability alert - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T04:28:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-118",
+    "title": "Unexpected admin console login - Defender for Endpoint",
+    "severity": "High",
+    "status": "Escalated",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T04:21:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-119",
+    "title": "Phishing email reported by user - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T04:14:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-120",
+    "title": "EDR tamper protection alert - GitHub Advanced Security",
+    "severity": "Critical",
+    "status": "InProgress",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T04:07:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-121",
+    "title": "Suspicious PowerShell execution - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T04:00:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-122",
+    "title": "Impossible travel sign-in detected - Okta",
+    "severity": "High",
+    "status": "Resolved",
+    "source": "Okta",
+    "createdAt": "2026-07-09T03:53:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-123",
+    "title": "Endpoint malware quarantine event - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T03:46:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-124",
+    "title": "Privileged role assignment anomaly - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T03:39:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-125",
+    "title": "Multiple failed VPN login attempts - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T03:32:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-126",
+    "title": "Outbound connection to known C2 host - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T03:25:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-127",
+    "title": "Sensitive file copied to removable media - Cloudflare",
+    "severity": "Medium",
+    "status": "InProgress",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T03:18:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-128",
+    "title": "New inbox forwarding rule created - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T03:11:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-129",
+    "title": "Unusual AWS access key usage - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T03:04:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-130",
+    "title": "Windows Defender disabled unexpectedly - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T02:57:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-131",
+    "title": "High-risk OAuth application consent - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "Escalated",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T02:50:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-132",
+    "title": "Lateral movement pattern detected - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T02:43:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-133",
+    "title": "DNS tunneling behavior observed - Splunk",
+    "severity": "Critical",
+    "status": "Resolved",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T02:36:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-134",
+    "title": "Database export volume spike - Defender for Endpoint",
+    "severity": "High",
+    "status": "InProgress",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T02:29:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-135",
+    "title": "Suspicious scheduled task created - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T02:22:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-136",
+    "title": "Unusual service account authentication - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T02:15:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-137",
+    "title": "Container image vulnerability alert - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T02:08:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-138",
+    "title": "Unexpected admin console login - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T02:01:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-139",
+    "title": "Phishing email reported by user - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T01:54:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-140",
+    "title": "EDR tamper protection alert - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T01:47:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-141",
+    "title": "Suspicious PowerShell execution - Splunk",
+    "severity": "Critical",
+    "status": "InProgress",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T01:40:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-142",
+    "title": "Impossible travel sign-in detected - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T01:33:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-143",
+    "title": "Endpoint malware quarantine event - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T01:26:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-144",
+    "title": "Privileged role assignment anomaly - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "Escalated",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T01:19:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-145",
+    "title": "Multiple failed VPN login attempts - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T01:12:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-146",
+    "title": "Outbound connection to known C2 host - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T01:05:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-147",
+    "title": "Sensitive file copied to removable media - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T00:58:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-148",
+    "title": "New inbox forwarding rule created - AWS GuardDuty",
+    "severity": "Low",
+    "status": "InProgress",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-09T00:51:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-149",
+    "title": "Unusual AWS access key usage - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-09T00:44:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-150",
+    "title": "Windows Defender disabled unexpectedly - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-09T00:37:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-151",
+    "title": "High-risk OAuth application consent - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-09T00:30:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-152",
+    "title": "Lateral movement pattern detected - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-09T00:23:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-153",
+    "title": "DNS tunneling behavior observed - CrowdStrike",
+    "severity": "Critical",
+    "status": "FalsePositive",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-09T00:16:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-154",
+    "title": "Database export volume spike - Okta",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-09T00:09:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-155",
+    "title": "Suspicious scheduled task created - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "Resolved",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-09T00:02:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-156",
+    "title": "Unusual service account authentication - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-08T23:55:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-157",
+    "title": "Container image vulnerability alert - Splunk",
+    "severity": "Critical",
+    "status": "Escalated",
+    "source": "Splunk",
+    "createdAt": "2026-07-08T23:48:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-158",
+    "title": "Unexpected admin console login - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-08T23:41:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-159",
+    "title": "Phishing email reported by user - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-08T23:34:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-160",
+    "title": "EDR tamper protection alert - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-08T23:27:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-161",
+    "title": "Suspicious PowerShell execution - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-08T23:20:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-162",
+    "title": "Impossible travel sign-in detected - Okta",
+    "severity": "High",
+    "status": "InProgress",
+    "source": "Okta",
+    "createdAt": "2026-07-08T23:13:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-163",
+    "title": "Endpoint malware quarantine event - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-08T23:06:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-164",
+    "title": "Privileged role assignment anomaly - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-08T22:59:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-165",
+    "title": "Multiple failed VPN login attempts - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-08T22:52:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-166",
+    "title": "Outbound connection to known C2 host - Defender for Endpoint",
+    "severity": "High",
+    "status": "Resolved",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-08T22:45:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-167",
+    "title": "Sensitive file copied to removable media - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-08T22:38:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-168",
+    "title": "New inbox forwarding rule created - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-08T22:31:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-169",
+    "title": "Unusual AWS access key usage - CrowdStrike",
+    "severity": "Critical",
+    "status": "InProgress",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-08T22:24:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-170",
+    "title": "Windows Defender disabled unexpectedly - Okta",
+    "severity": "High",
+    "status": "Escalated",
+    "source": "Okta",
+    "createdAt": "2026-07-08T22:17:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-171",
+    "title": "High-risk OAuth application consent - Microsoft Sentinel",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-08T22:10:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-172",
+    "title": "Lateral movement pattern detected - AWS GuardDuty",
+    "severity": "Low",
+    "status": "FalsePositive",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-08T22:03:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-173",
+    "title": "DNS tunneling behavior observed - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-08T21:56:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-174",
+    "title": "Database export volume spike - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-08T21:49:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-175",
+    "title": "Suspicious scheduled task created - Cloudflare",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-08T21:42:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-176",
+    "title": "Unusual service account authentication - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "InProgress",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-08T21:35:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-177",
+    "title": "Container image vulnerability alert - CrowdStrike",
+    "severity": "Critical",
+    "status": "Resolved",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-08T21:28:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-178",
+    "title": "Unexpected admin console login - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-08T21:21:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-179",
+    "title": "Phishing email reported by user - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-08T21:14:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-180",
+    "title": "EDR tamper protection alert - AWS GuardDuty",
+    "severity": "Low",
+    "status": "New",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-08T21:07:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-181",
+    "title": "Suspicious PowerShell execution - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-08T21:00:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-182",
+    "title": "Impossible travel sign-in detected - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-08T20:53:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-183",
+    "title": "Endpoint malware quarantine event - Cloudflare",
+    "severity": "Medium",
+    "status": "Escalated",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-08T20:46:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-184",
+    "title": "Privileged role assignment anomaly - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-08T20:39:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-185",
+    "title": "Multiple failed VPN login attempts - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-08T20:32:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-186",
+    "title": "Outbound connection to known C2 host - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-08T20:25:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-187",
+    "title": "Sensitive file copied to removable media - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-08T20:18:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-188",
+    "title": "New inbox forwarding rule created - AWS GuardDuty",
+    "severity": "Critical",
+    "status": "Resolved",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-08T20:11:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-189",
+    "title": "Unusual AWS access key usage - Splunk",
+    "severity": "Critical",
+    "status": "New",
+    "source": "Splunk",
+    "createdAt": "2026-07-08T20:04:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-190",
+    "title": "Windows Defender disabled unexpectedly - Defender for Endpoint",
+    "severity": "High",
+    "status": "InProgress",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-08T19:57:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-191",
+    "title": "High-risk OAuth application consent - Cloudflare",
+    "severity": "Medium",
+    "status": "FalsePositive",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-08T19:50:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-192",
+    "title": "Lateral movement pattern detected - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-08T19:43:00.000Z",
+    "assignee": "Avery Brooks"
+  },
+  {
+    "id": "alert-193",
+    "title": "DNS tunneling behavior observed - CrowdStrike",
+    "severity": "Critical",
+    "status": "New",
+    "source": "CrowdStrike",
+    "createdAt": "2026-07-08T19:36:00.000Z",
+    "assignee": null
+  },
+  {
+    "id": "alert-194",
+    "title": "Database export volume spike - Okta",
+    "severity": "High",
+    "status": "New",
+    "source": "Okta",
+    "createdAt": "2026-07-08T19:29:00.000Z",
+    "assignee": "Jason Zhao"
+  },
+  {
+    "id": "alert-195",
+    "title": "Suspicious scheduled task created - Microsoft Sentinel",
+    "severity": "Medium",
+    "status": "New",
+    "source": "Microsoft Sentinel",
+    "createdAt": "2026-07-08T19:22:00.000Z",
+    "assignee": "Maya Chen"
+  },
+  {
+    "id": "alert-196",
+    "title": "Unusual service account authentication - AWS GuardDuty",
+    "severity": "Low",
+    "status": "Escalated",
+    "source": "AWS GuardDuty",
+    "createdAt": "2026-07-08T19:15:00.000Z",
+    "assignee": "Priya Shah"
+  },
+  {
+    "id": "alert-197",
+    "title": "Container image vulnerability alert - Splunk",
+    "severity": "Critical",
+    "status": "InProgress",
+    "source": "Splunk",
+    "createdAt": "2026-07-08T19:08:00.000Z",
+    "assignee": "Noah Kim"
+  },
+  {
+    "id": "alert-198",
+    "title": "Unexpected admin console login - Defender for Endpoint",
+    "severity": "High",
+    "status": "New",
+    "source": "Defender for Endpoint",
+    "createdAt": "2026-07-08T19:01:00.000Z",
+    "assignee": "Elena Torres"
+  },
+  {
+    "id": "alert-199",
+    "title": "Phishing email reported by user - Cloudflare",
+    "severity": "Medium",
+    "status": "Resolved",
+    "source": "Cloudflare",
+    "createdAt": "2026-07-08T18:54:00.000Z",
+    "assignee": "Sam Rivera"
+  },
+  {
+    "id": "alert-200",
+    "title": "EDR tamper protection alert - GitHub Advanced Security",
+    "severity": "Low",
+    "status": "New",
+    "source": "GitHub Advanced Security",
+    "createdAt": "2026-07-08T18:47:00.000Z",
+    "assignee": "Avery Brooks"
+  }
+]

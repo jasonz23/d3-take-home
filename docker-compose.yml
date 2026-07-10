@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: alert-triage-postgres
+    restart: unless-stopped
+    ports:
+      - "7433:5432"
+    environment:
+      POSTGRES_USER: alert_user
+      POSTGRES_PASSWORD: alert_password
+      POSTGRES_DB: alert_triage
+    volumes:
+      - alert_triage_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U alert_user -d alert_triage"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  alert_triage_postgres_data:

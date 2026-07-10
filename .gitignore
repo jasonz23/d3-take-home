@@ -1,7 +1,28 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.vs/
+*.swp
+*.swo
+
+# Local secrets and environment overrides
+.env
+.env.*
+!.env.example
+!*.env.example
+!frontend/.env.local.example
+**/appsettings.Development.json
+**/secrets.json
+*.pem
+*.key
+
+# Node dependencies and package-manager caches
+node_modules/
+**/node_modules/
 /.pnp
 .pnp.*
 .yarn/*
@@ -10,32 +31,55 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
+# Next.js build output
+.next/
+**/.next/
+out/
+**/out/
 
-# next.js
-/.next/
-/out/
+# Frontend test and coverage output
+coverage/
+**/coverage/
+test-results/
+**/test-results/
+playwright-report/
+**/playwright-report/
 
-# production
-/build
+# Generic build output
+build/
+**/build/
+dist/
+**/dist/
 
-# misc
-.DS_Store
-*.pem
-
-# debug
+# Logs and debug output
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
-
-# vercel
-.vercel
-
-# typescript
+# TypeScript incremental build info
 *.tsbuildinfo
-next-env.d.ts
+
+# .NET build and local tooling output
+bin/
+obj/
+**/bin/
+**/obj/
+TestResults/
+**/TestResults/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+*.nupkg
+*.snupkg
+
+# Local database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Deployment/cache folders
+.vercel/
