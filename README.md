@@ -3,32 +3,20 @@
 SOC alert triage app built as a monorepo:
 
 ```text
-Next.js + TypeScript frontend -> ASP.NET Core 8 API -> EF Core -> PostgreSQL 16
+Next.js + TypeScript -> ASP.NET Core 8 Web API -> EF Core -> PostgreSQL 16
 ```
 
-The frontend never reads the seed JSON, connects to PostgreSQL, uses Prisma, or defines Next.js API routes. The ASP.NET API owns alert reads, filtering, sorting, status and assignee updates, optimistic concurrency, audit logging, and JSON import.
+The frontend never connects to PostgreSQL or imports alert JSON directly. Alert reads, filtering, sorting, pagination, imports, status updates, assignee updates, audit history, and analytics all go through the ASP.NET API.
 
-The mock alert JSON lives at `backend/AlertTriage.Api/Data/alerts.json` and contains 200 alerts with exactly these fields: `id`, `title`, `severity`, `status`, `source`, `createdAt`, and `assignee`.
-
-## Run
+## Run Locally
 
 ```bash
 docker compose up -d
+./backend/scripts/setup-backend.sh
+./backend/scripts/run-backend.sh
 ```
 
-```bash
-cd backend/AlertTriage.Api
-dotnet restore
-dotnet ef database update
-dotnet run --urls http://localhost:8182
-```
-
-After the API starts, import the mock data when needed:
-
-```bash
-curl -F "file=@backend/AlertTriage.Api/Data/alerts.json;type=application/json" \
-  http://localhost:8182/api/alerts/import
-```
+In another terminal:
 
 ```bash
 cd frontend
@@ -37,33 +25,44 @@ npm install
 npm run dev
 ```
 
-Services: frontend `http://localhost:8181`, analytics `http://localhost:8181/charts`, API `http://localhost:8182`, Swagger `http://localhost:8182/swagger`, PostgreSQL `localhost:7433`.
-
-## Tests
+Import mock data after the API starts:
 
 ```bash
-cd backend/AlertTriage.Api.Tests && dotnet test
-cd frontend && npm run lint && npm run typecheck && npm run test:e2e
+curl -F "file=@backend/AlertTriage.Api/Data/alerts.json;type=application/json" \
+  http://localhost:8182/api/alerts/import
 ```
+
+Frontend: `http://localhost:8181`  
+Analytics: `http://localhost:8181/charts`  
+API/Swagger: `http://localhost:8182/swagger`
 
 ## Key Decisions And Trade-Offs
 
-- Kept the C# API as the system of record. This adds more setup than a frontend-only demo, but matches the requested production boundary and keeps DB credentials out of the browser.
-- Used EF Core with a checked-in initial migration and a JSON import endpoint for `Data/alerts.json`. Local setup/reset does not seed automatically, so uploaded data is explicit and repeatable.
-- Status and assignee updates require the caller’s current `version`; stale writes return `409 VERSION_CONFLICT`. This is simple and visible in the UI, though a production system should use a stronger row-version strategy.
-- Alert list filtering, sorting, and pagination are API-owned (`page`, `pageSize`, filter params) and mirrored into the browser URL so refresh/share preserves the analyst's current queue view.
-- Alert JSON uploads go through `POST /api/alerts/import`; the API validates the field shape, replaces the mock alert set transactionally, and persists imported alerts through EF Core.
-- Alert analytics use Chart.js on `/charts` backed by `GET /api/alerts/summary`, so aggregation stays in the ASP.NET API instead of the browser fetching every row.
-- Added `AlertStatusEvent` rows for both real updates and seeded non-new alerts, then display them as an Investigation Timeline in the drawer.
-- UX improvement: keyboard-first triage with global shortcuts (`J/K`, `Enter`, `/`, `Esc`, `1-5`) to reduce repetitive mouse interaction during high-volume investigations.
-- Added accessibility polish: row-level keyboard navigation, drawer focus trap/restore, visible focus states, ARIA labels/live status messages, skeleton loading, and URL-persisted filters.
+- Kept ASP.NET as the system of record. This is more setup than a frontend-only demo, but it matches the requested production boundary and keeps DB credentials out of the browser.
+- Made filtering, sorting, pagination, search, import validation, status updates, assignee updates, and analytics API-owned. The UI stays thin and refresh/share works because filters and page state are mirrored into the URL.
+- Used EF Core with PostgreSQL and checked-in migrations. The reset/setup flow does not auto-seed; mock alerts are imported explicitly through the API so local state is predictable.
+- Added optimistic updates with `version` conflict checks for status and assignee changes. This is simple and visible for a take-home; production should use a stronger row-version strategy.
+- Added `AlertStatusEvent` audit rows and an Investigation Timeline in the drawer. This makes the stored audit trail visible instead of only persisting it.
+- Added keyboard-first triage, accessible focus handling, sticky filters/table headers, loading/empty states, toasts, and Chart.js analytics. These are practical SOC workflow improvements rather than decorative UI.
+
+## UX Improvements
+
+- **Keyboard-first triage:** Shortcuts (`J/K`, `Enter`, `/`, `Esc`, `1-5`) reduce repetitive mouse interaction during high-volume investigations.
+- **Accessible visual controls:** Semantic tables, visible focus states, ARIA labels, live status messages, and non-color-only badges make the queue usable with keyboards and assistive technology.
+- **Sticky filters and table header:** Search, filters, and column labels stay available while analysts scan long alert queues.
+- **Assignee editing:** Updating ownership directly in the drawer keeps triage flow fast without leaving the selected alert.
+- **Investigation timeline:** Status history in the side drawer turns audit events into a readable investigation narrative.
+- **Analytics charts page:** Chart.js summaries expose severity, status, source, assignee workload, and created-over-time trends without exporting data.
+- **Pagination with URL state:** Page, page size, filters, search, and sort persist in the URL so analysts can refresh or share the same queue view.
 
 ## AI Coding Agent Usage
 
-I used Codex as the primary coding agent to scaffold the monorepo, generate the ASP.NET/EF Core backend, build the Next.js UI, and iterate on tests. I used shell commands, Docker, Playwright, and a Dockerized `.NET 8 SDK` as verification tools rather than delegating to another agent.
+I used Codex as the primary coding agent to scaffold and iterate on the monorepo. I delegated repetitive implementation work: ASP.NET controller/contracts/tests, EF models and migrations, Next.js components, Tailwind layout, Playwright tests, mock data generation, scripts, and README updates.
 
-I overrode or corrected agent-generated assumptions where runtime checks proved them wrong: the SDK-style `.csproj` duplicate content include, ASP.NET record validation metadata placement, EF tracking for new `AlertStatusEvent` inserts, CORS for alternate local ports, and brittle Playwright selectors. The final changes were driven by compile/test/live API feedback, not just generated code.
+I used terminal commands, Docker, `dotnet test`, `npm run lint`, `npm run typecheck`, `npm run test:e2e`, and `npm run build` as verification tools. I did not rely on generated code without running it.
+
+I overrode or corrected agent assumptions when runtime checks showed issues: .NET 8 pathing on a machine with .NET 10 installed, `dotnet-ef` setup, API startup seeding versus manual import, EF content include behavior, CORS/port changes, status-event tracking, brittle Playwright selectors, and Chart.js client-only rendering.
 
 ## Production Follow-Ups
 
-Add real analyst authentication/authorization, derive `ChangedBy` from the authenticated principal, move secrets to environment-specific secret storage, harden CORS, add structured logs/metrics/tracing, enforce valid status-transition rules, and use PostgreSQL-native concurrency such as `xmin` or a dedicated row-version column.
+For production, I would add real authentication/authorization, derive `ChangedBy` from the authenticated analyst, move secrets to managed secret storage, harden CORS, add structured logs/metrics/tracing, enforce valid status-transition rules, use PostgreSQL-native concurrency such as `xmin` or a dedicated row-version column, add server-side rate limits and file scanning for imports, and expand API/integration coverage around PostgreSQL-specific search/index behavior.
