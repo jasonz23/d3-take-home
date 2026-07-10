@@ -65,4 +65,8 @@ I overrode or corrected agent assumptions when runtime checks showed issues: .NE
 
 ## Production Follow-Ups
 
-For production, I would add real authentication/authorization, derive `ChangedBy` from the authenticated analyst, move secrets to managed secret storage, harden CORS, add structured logs/metrics/tracing, enforce valid status-transition rules, use PostgreSQL-native concurrency such as `xmin` or a dedicated row-version column, add server-side rate limits and file scanning for imports, and expand API/integration coverage around PostgreSQL-specific search/index behavior.
+For production, I would add real authentication/authorization, derive `ChangedBy` from the authenticated analyst, move secrets to managed secret storage, harden CORS, add structured logs/metrics/tracing, enforce valid status-transition rules, and use PostgreSQL-native concurrency such as `xmin` or a dedicated row-version column.
+
+For performance, I would add caching for read-heavy endpoints such as alert summaries, source lists, and stable filter metadata, with explicit invalidation after imports or status/assignee updates. I would also optimize query paths with production-scale indexes, keyset pagination for deep queues, full-text or trigram search tuning, response compression, API pagination limits, and background jobs for expensive analytics.
+
+For operational hardening, I would add server-side rate limits, file scanning and size limits for imports, audit-log retention policies, backup/restore checks, PostgreSQL integration tests, and broader load testing around search, filtering, and concurrent triage updates.
