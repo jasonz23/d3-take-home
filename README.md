@@ -61,11 +61,13 @@ API/Swagger: `http://localhost:8182/swagger`
 
 ## AI Coding Agent Usage
 
-I used Codex as the primary coding agent to scaffold and iterate on the monorepo. I delegated repetitive implementation work: ASP.NET controller/contracts/tests, EF models and migrations, Next.js components, Tailwind layout, Playwright tests, mock data generation, scripts, and README updates.
+I first used AI as a planning partner to unpack the assignment, identify ambiguity, challenge implementation choices, and turn the requirements into a concrete technical spec. I then used that spec as the source of truth for coding agents rather than letting them freely design the system.
 
-I used terminal commands, Docker, `dotnet test`, `npm run lint`, `npm run typecheck`, `npm run test:e2e`, and `npm run build` as verification tools. I did not rely on generated code without running it.
+I intentionally kept the code modular so multiple agents could work in parallel without stepping on each other: backend contracts/controllers/tests, EF data access, frontend API/types, table/filter UI, drawer interactions, import flow, charts, and docs were separable work units.
 
-I overrode or corrected agent assumptions when runtime checks showed issues: .NET 8 pathing on a machine with .NET 10 installed, `dotnet-ef` setup, API startup seeding versus manual import, EF content include behavior, CORS/port changes, status-event tracking, brittle Playwright selectors, and Chart.js client-only rendering.
+For backend work, I directed agents to work test-first: define controller behavior, add xUnit coverage, then implement against those tests. For frontend work, I used Playwright scenarios to verify real user flows like filtering, pagination, imports, drawer updates, keyboard navigation, and charts.
+
+I reviewed and overrode agent output where needed: .NET 8 pathing on a machine with .NET 10 installed, `dotnet-ef` setup, API startup seeding versus manual import, EF content include behavior, CORS/port changes, status-event tracking, brittle Playwright selectors, and Chart.js client-only rendering. I treated AI as an accelerator, but final decisions were driven by the spec, code review, and passing verification commands.
 
 ## Production Follow-Ups
 

@@ -296,6 +296,11 @@ public sealed class AlertsController : ControllerBase
         UpdateAlertStatusRequest request,
         CancellationToken cancellationToken)
     {
+        if (request.Version < 1)
+        {
+            return BadRequest(Error("INVALID_VERSION", "The version must be greater than or equal to 1."));
+        }
+
         var alert = await _db.Alerts
             .Include(x => x.StatusEvents)
             .SingleOrDefaultAsync(x => x.Id == id, cancellationToken);
